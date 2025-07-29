@@ -34,4 +34,8 @@ describe("Add Method", () => {
   it("should allow delimiters of any length with //[delimiter]\\n format", () => {
     expect(StringCalculator.add("//[***]\n1***2***3")).toBe(6);
   });
+
+  it("should allow multiple delimiters of any length", () => {
+    expect(StringCalculator.add("//[**][%%]\n1**2%%3")).toBe(6);
+  });
 });
