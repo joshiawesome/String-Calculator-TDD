@@ -5,6 +5,8 @@ class StringCalculator {
     const numArray = numbers.split(",").map(Number);
 
     if (numArray.length === 1) return numArray[0];
+
+    return numArray.reduce((a, b) => a + b);
   }
 }
 

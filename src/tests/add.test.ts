@@ -8,4 +8,8 @@ describe("Add Method", () => {
   it("should return the number when the input is a single number", () => {
     expect(StringCalculator.add("1")).toBe(1);
   });
+
+  it("should return the sum of the numbers when the input is a list of numbers", () => {
+    expect(StringCalculator.add("1,2")).toBe(3);
+  });
 });
