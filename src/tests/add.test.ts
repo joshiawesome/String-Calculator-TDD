@@ -20,4 +20,10 @@ describe("Add Method", () => {
   it("should support custom delimiters", () => {
     expect(StringCalculator.add("//%\n1%2")).toBe(3);
   });
+
+  test("Add throws exception for negative numbers", () => {
+    expect(() => StringCalculator.add("1,-2,3,-4")).toThrow(
+      "negatives not allowed: -2,-4"
+    );
+  });
 });

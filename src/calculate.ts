@@ -18,6 +18,12 @@ class StringCalculator {
 
     if (numArray.length === 1) return numArray[0];
 
+    const negatives = numArray.filter((n) => n < 0);
+
+    if (negatives.length > 0) {
+      throw new Error(`negatives not allowed: ${negatives.join(",")}`);
+    }
+
     return numArray.reduce((a, b) => a + b);
   }
 }
