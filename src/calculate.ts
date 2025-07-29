@@ -8,8 +8,23 @@ class StringCalculator {
     // Check for custom delimiter
     if (numbers.startsWith("//")) {
       const delimiterMatch = numbers.match(/^\/\/(.+)\n/);
+
       if (delimiterMatch) {
-        delimiter = new RegExp(delimiterMatch[1]);
+        const delimiterSection = delimiterMatch[1];
+
+        const delimiters = Array.from(
+          delimiterSection.matchAll(/\[(.*?)\]/g)
+        ).map((match) => match[1]);
+
+        if (delimiters.length > 0) {
+          const escapedDelimiters = delimiters.map((d) =>
+            d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+          );
+          delimiter = new RegExp(escapedDelimiters.join("|"));
+        } else {
+          delimiter = new RegExp(delimiterSection);
+        }
+
         numString = numbers.slice(delimiterMatch[0].length);
       }
     }
