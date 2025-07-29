@@ -2,7 +2,19 @@ class StringCalculator {
   public static add(numbers: string) {
     if (!numbers.length) return 0;
 
-    const numArray = numbers.split(/,|\n/).map(Number);
+    let delimiter = /,|\n/;
+    let numString = numbers;
+
+    // Check for custom delimiter
+    if (numbers.startsWith("//")) {
+      const delimiterMatch = numbers.match(/^\/\/(.+)\n/);
+      if (delimiterMatch) {
+        delimiter = new RegExp(delimiterMatch[1]);
+        numString = numbers.slice(delimiterMatch[0].length);
+      }
+    }
+
+    const numArray = numString.split(delimiter).map(Number);
 
     if (numArray.length === 1) return numArray[0];
 
