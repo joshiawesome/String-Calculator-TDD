@@ -38,4 +38,8 @@ describe("Add Method", () => {
   it("should allow multiple delimiters of any length", () => {
     expect(StringCalculator.add("//[**][%%]\n1**2%%3")).toBe(6);
   });
+
+  it("should ignore numbers bigger than 1000", () => {
+    expect(StringCalculator.add("2,1001")).toBe(2);
+  });
 });

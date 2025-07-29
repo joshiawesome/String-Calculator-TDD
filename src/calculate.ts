@@ -29,7 +29,10 @@ class StringCalculator {
       }
     }
 
-    const numArray = numString.split(delimiter).map(Number);
+    const numArray = numString
+      .split(delimiter)
+      .map(Number)
+      .filter((n) => n <= 1000);
 
     if (numArray.length === 1) return numArray[0];
 
